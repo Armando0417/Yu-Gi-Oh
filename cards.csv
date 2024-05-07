@@ -1,6 +1,7 @@
-Blue-Eyes White Dragon,3000,2500
-Dark Magician,2500,2100
-Red-Eyes Black Dragon,2400,2000
-Summoned Skull,2500,1200
-Buster Blader,2700,2300
-Sangan,1000,600
+Layout is as follows: Name, Type of Card, then if Monster Card: type, stars, atk and def
+
+Blue-Eyes White Dragon,MONSTER,8,3000,2500
+Dark Magician,MONSTER,7,2500,2100
+Red-Eyes Black Dragon,MONSTER,7,2400,2000
+Summoned Skull,MONSTER,6,2500,1200
+Pot of Greed, SPELL

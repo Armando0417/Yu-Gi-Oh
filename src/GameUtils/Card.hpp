@@ -54,8 +54,10 @@ class Card {
 
 
     public:
-        Card(string n, CardType t, string e, ofImage img, unique_ptr<CardEffect> eff = nullptr) 
-            : name(n), type(t), effectDescription(e), isDestroyed(false), cardImage(img), effect(move(eff)) {}
+        Card(string n, CardType t, string e, string imgPath, unique_ptr<CardEffect> eff = nullptr) 
+            : name(n), type(t), effectDescription(e), isDestroyed(false), effect(move(eff)) {
+                cardImage.load(imgPath);
+            }
         // Move Constructor
         
         Card(Card&& other) noexcept
@@ -126,16 +128,16 @@ class MonsterCard: public Card{
 
     public: 
         // Default non-effect monster constructor. Use this constructor if you want to make a regular non-effect monster card
-            MonsterCard(string n, int stars, int atk, int def, ofImage img)
-                : Card(n, MONSTER, "", img), 
+            MonsterCard(string n, int stars, int atk, int def, string imgPath)
+                : Card(n, MONSTER, "", imgPath), 
                 starLevel(stars), 
                 attack(atk), 
                 defense(def), 
                 monsterType(NORMAL), 
                 tuner(false) {}
 
-            MonsterCard(string n, int stars, int atk, int def, MonsterType mType, string effect, ofImage img, unique_ptr<CardEffect> eff = nullptr)
-                : Card(n, MONSTER, effect, img, move(eff)),
+            MonsterCard(string n, int stars, int atk, int def, MonsterType mType, string effect, string imgPath, unique_ptr<CardEffect> eff = nullptr)
+                : Card(n, MONSTER, effect, imgPath, move(eff)),
                 starLevel(stars), 
                 attack(atk), 
                 defense(def), 
@@ -160,8 +162,8 @@ class MonsterCard: public Card{
 
 class TrapCard : public Card {
     public: 
-        TrapCard(string n, string e, ofImage img, unique_ptr<CardEffect> eff = nullptr)
-                : Card(n, TRAP, e, img, move(eff)) {}
+        TrapCard(string n, string e, string imgPath, unique_ptr<CardEffect> eff = nullptr)
+                : Card(n, TRAP, e, imgPath, move(eff)) {}
         
         void activate() override {
             // Activation logic here
@@ -170,8 +172,8 @@ class TrapCard : public Card {
 
 class SpellCard : public Card {
     public: 
-        SpellCard(string n, string e, ofImage img, unique_ptr<CardEffect> eff = nullptr)
-            : Card(n, SPELL, e, img, move(eff)) {}
+        SpellCard(string n, string e, string imgPath, unique_ptr<CardEffect> eff = nullptr)
+            : Card(n, SPELL, e, imgPath, move(eff)) {}
     
         void activate() override {
             // Basic Spell activation logic
@@ -181,8 +183,8 @@ class SpellCard : public Card {
 
 class FusionMonsterCard : public MonsterCard {
     public:
-        FusionMonsterCard(string name, int stars, int atk, int def, string effect, ofImage img, unique_ptr<CardEffect> eff = nullptr)
-            : MonsterCard(name, stars, atk, def, FUSION, effect, img, move(eff)) {}
+        FusionMonsterCard(string name, int stars, int atk, int def, string effect, string imgPath, unique_ptr<CardEffect> eff = nullptr)
+            : MonsterCard(name, stars, atk, def, FUSION, effect, imgPath, move(eff)) {}
 
         void activate() override {
             // Fusion monster-specific activation logic
@@ -192,8 +194,8 @@ class FusionMonsterCard : public MonsterCard {
 
 class SynchroMonsterCard : public MonsterCard {
     public:
-        SynchroMonsterCard(string name, int stars, int atk, int def, string effect, ofImage img, unique_ptr<CardEffect> eff = nullptr)
-            : MonsterCard(name, stars, atk, def, SYNCHRO, effect, img, move(eff)) {}
+        SynchroMonsterCard(string name, int stars, int atk, int def, string effect, string imgPath, unique_ptr<CardEffect> eff = nullptr)
+            : MonsterCard(name, stars, atk, def, SYNCHRO, effect, imgPath, move(eff)) {}
 
         void activate() override {
             // Synchro monster-specific activation logic

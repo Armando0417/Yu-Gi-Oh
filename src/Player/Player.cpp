@@ -1,7 +1,7 @@
 #include "player.hpp"
 
 
-    void Player::drawCard() {
+    void Player::drawCardFromDeck() {
         if (!deck.empty()) {
             hand.push_back( move(deck.back() ));
             deck.pop_back();
@@ -11,7 +11,7 @@
     unique_ptr<Card> Player::requestPlayCard(unsigned int handIndex) {
             if (handIndex < hand.size()) {
                 unique_ptr<Card> card = move(hand[handIndex]);
-                hand.erase(hand.begin() + handIndex);
+                hand.erase(hand.begin() + handIndex); // unnecesary i think 
                 return card;
             }
             return nullptr;

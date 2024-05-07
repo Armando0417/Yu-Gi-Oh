@@ -66,7 +66,8 @@ struct Zone {
             ofNoFill();
             ofSetLineWidth(2);       // Thicker line for visibility
             ofSetColor(255, 0, 0);   // Red border if selected
-        } else {
+        } 
+        else {
             ofFill();
             ofSetColor(255, 255, 255); // Default fill color
         }

@@ -15,7 +15,7 @@ class Player {
 
         Player(string n, int id) : name(n), lifePoints(8000), ID(id)  {}
 
-        void drawCard();
+        void drawCardFromDeck();
         unique_ptr<Card> requestPlayCard(unsigned int handIndex);
         void calculateLifePoints(int change);  // Can be positive (healing) or negative (damage)
         void shuffleDeck();
