@@ -66,7 +66,7 @@ void GameBoardGui::update() {
             zones[DECK].setParameters(currentX, startingY + cardHeight + padding, cardWidth, cardHeight);
 }
 
-void GameBoardGui::drawBoard() {
+void GameBoardGui::renderBoard() {
     //  ofBackground(30);
     if (owner == TOP_PLAYER) {
         ofSetColor(100, 100, 250);  // Light blue background for top player
@@ -81,6 +81,20 @@ void GameBoardGui::drawBoard() {
     gui.draw();
     for (auto& zone : zones) {
         zone.second.draw();
+    }
+}
+
+void GameBoardGui::drawPlayerHand(const Player& player) {
+    int xPosition = 50;  // 5 X position for the hand
+    int yPosition = 700; // Y position for all cards in the hand
+    int cardWidth = 100;
+    int cardHeight = 150;
+    int spacing = 20;
+
+    for (size_t i = 0; i < player.hand.size(); i++) {
+        ofSetColor(255, 255, 255);  // Set color to white
+        ofDrawRectangle(xPosition, yPosition, cardWidth, cardHeight);
+        xPosition += cardWidth + spacing;  // Move to the next card position
     }
 }
 
