@@ -5,6 +5,8 @@
 #include "ofxPanel.h"
 #include "ofParameter.h"
 #include "Card.hpp"
+#include "Player.hpp"
+
 
 enum ZoneType {
     MONSTER_ZONE_1,
@@ -52,6 +54,15 @@ struct Zone {
 
     bool isTaken() const {
         return card != nullptr;
+    }
+
+    void checkZone(int x, int y) {
+        if( x >= xPos && x <= xPos + cardWidth && y >= yPos && y <= yPos + cardHeight) {
+            selected = true;
+        }
+        else{
+            selected = false;
+        }
     }
 
  
@@ -106,15 +117,15 @@ class GameBoardGui {
 
         void setup();
 
-        void update() ;
+        void update();
 
-        void drawBoard() ;
+        void renderBoard();
 
         bool isZoneAvailable(ZoneType z) { return !zones[z].isTaken(); }
 
     
         void battleBetweenZones (ZoneType attacker, ZoneType defender);
 
-
+        void drawPlayerHand(const Player& player);
 
 };

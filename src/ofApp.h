@@ -6,6 +6,7 @@
 #include "Card.hpp"
 #include "GameBoard.hpp"
 #include "DeckMaker.hpp"
+#include "GameManager.hpp"
 
 
 class ofApp : public ofBaseApp{
@@ -33,6 +34,9 @@ class ofApp : public ofBaseApp{
 		unique_ptr<GameBoardGui> BottomBoard;
 		unique_ptr<Card> card;
 		unique_ptr<DeckMaker> deck;
+		
+
+		unique_ptr<GameManager> gameManager;
 
 
 	// std::unique_ptr<MonsterCard> card;

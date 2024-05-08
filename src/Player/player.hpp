@@ -1,7 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "Card.hpp"
-#include "GameBoard.hpp"
+// #include "GameBoard.hpp"
 
 class Player {
     
