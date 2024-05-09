@@ -22,7 +22,7 @@ void ofApp::setup(){
 
 
     deck = make_unique<DeckMaker>();
-    deck->loadDeck("cards");
+    deck->loadDeck("cards.csv");
     if(deck->deck.size() > 0) {
         std::cout << "Deck was loaded correctly" << std::endl;
     }

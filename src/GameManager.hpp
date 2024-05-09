@@ -104,6 +104,15 @@ class GameManager {
         }
         void mousePressed(int mouseX, int mouseY) {
             stateButton->setPressed(mouseX, mouseY);
+
+            for(auto & board : gameboards) {
+                for(auto & zone : board->zones) {
+                    if(zone.second.selected) {
+                        unique_ptr<Card> c = make_unique<MonsterCard>("Blue Eyes White Dragon", 8, 3000, 2500, "bin\\data\\CardImages\\BEWD.jpg");
+                        zone.second.setCard(move(c));
+                    }
+                }
+            }
         }
 
 };

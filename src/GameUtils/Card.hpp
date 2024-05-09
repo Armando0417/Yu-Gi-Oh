@@ -69,7 +69,7 @@ class Card {
                 cardImage.draw(x, y, cardWidth, cardHeight);
             }
             // Reset color after drawing
-            ofSetColor(255, 255, 255);
+            // ofSetColor(255, 255, 255);
         }
         // Move Assignment Operator
         Card& operator=(Card&& other) noexcept {
@@ -85,7 +85,7 @@ class Card {
 
         // Example method
         void print() const {
-            std::cout << "Card Name: " << name << std::endl;
+            cout << "Card Name: " << name << endl;
         }
 
 

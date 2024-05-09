@@ -65,23 +65,32 @@ struct Zone {
         }
     }
 
+    void setCard(unique_ptr<Card> c) {
+        card = move(c);
+    }
+
  
 
 
     void draw() {
         if (isTaken()) {
-            ofFill();
-            ofSetColor(255, 255, 0);  // Yellow fill if taken
+            card->drawCard(xPos, yPos, cardWidth, cardHeight);    
         }
+        else{
+
         if (selected) {
             ofNoFill();
             ofSetLineWidth(2);       // Thicker line for visibility
             ofSetColor(255, 0, 0);   // Red border if selected
+            // ofFill();
         } 
         else {
-            ofFill();
+            // ofFill();
+            ofNoFill();
             ofSetColor(255, 255, 255); // Default fill color
         }
+        }
+
         ofDrawRectangle(xPos, yPos, cardWidth, cardHeight);
         ofSetLineWidth(1);           // Reset line width
     }
